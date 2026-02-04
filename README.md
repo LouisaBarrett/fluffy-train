@@ -4,7 +4,7 @@ This project was created with AI Studio app for the course The Ai Augmented Desi
 
 View the app in AI Studio: https://ai.studio/apps/drive/15mdUr-Tf22t309Lz6Q7sdCv4zIw1i665
 
-View project hosted on Vercel: https://fluffy-train-pi.vercel.app/
+View project hosted with Vercel: https://fluffy-train-pi.vercel.app/
 
 ## Run Locally
 
