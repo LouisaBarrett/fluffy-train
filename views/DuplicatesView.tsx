@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, Info, Trash2, CheckCircle, Scale, Sparkles, Database } from 'lucide-react';
 import { useSettings } from '../store/context';
 import { AccessibleButton } from '../components/AccessibleButton';
-import { MOCK_PHOTOS } from '../constants';
+import { MOCK_PHOTOS, handleImageError } from '../constants';
 
 export const DuplicatesView: React.FC = () => {
   const { setView, settings, showUndoToast } = useSettings();
@@ -64,7 +64,7 @@ export const DuplicatesView: React.FC = () => {
                 className={`relative cursor-pointer transition-all rounded-[28px] overflow-hidden ${selectedIdx === i ? 'ring-4 ring-[#007AFF] ring-inset z-10 shadow-lg' : 'opacity-50 scale-95'}`}
                 onClick={() => setSelectedIdx(i)}
               >
-                <img src={photo.url} className="w-full h-full object-cover" alt="Duplicate" />
+                <img src={photo.url} className="w-full h-full object-cover" alt="Duplicate" onError={handleImageError} />
                 <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded-md">
                    {photo.fileSize}
                 </div>

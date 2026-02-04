@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, Share, Edit3, Trash2, Info, X, Heart } from 'lucide-react';
 import { useSettings } from '../store/context';
 import { AccessibleButton } from '../components/AccessibleButton';
+import { handleImageError } from '../constants';
 
 export const PhotoDetailView: React.FC = () => {
   const { selectedPhoto, setSelectedPhoto, setView, settings, showUndoToast, toggleFavorite } = useSettings();
@@ -73,6 +74,7 @@ export const PhotoDetailView: React.FC = () => {
           src={selectedPhoto.url} 
           alt="Preview" 
           className="max-w-full max-h-full object-contain"
+          onError={handleImageError}
         />
         
         {/* Info Panel - Opaque Detail View (Need #9) */}

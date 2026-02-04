@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Search as SearchIcon, Mic, Clock, Sparkles, X, LayoutGrid } from 'lucide-react';
+import { Search as SearchIcon, Mic, Clock, Sparkles, X, LayoutGrid, Loader2 } from 'lucide-react';
 import { useSettings } from '../store/context';
 import { GoogleGenAI, Type } from '@google/genai';
 import { Photo } from '../types';
+import { handleImageError } from '../constants';
 
 export const SearchView: React.FC = () => {
   const { settings, photos, setSelectedPhoto, setView } = useSettings();
@@ -125,7 +126,7 @@ export const SearchView: React.FC = () => {
           </div>
         </form>
 
-        {aiTip && (
+        {aiTip && !isSearching && (
           <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-5 rounded-2xl text-white shadow-lg animate-in fade-in slide-in-from-bottom duration-500">
              <div className="flex gap-2 items-center mb-1.5">
                 <Sparkles size={16} className="text-blue-100" />
@@ -136,7 +137,32 @@ export const SearchView: React.FC = () => {
         )}
 
         {/* Results Area */}
-        {searchResults !== null ? (
+        {isSearching ? (
+          <div className="py-20 flex flex-col items-center justify-center space-y-8 animate-in fade-in duration-300">
+            <div className="relative">
+              {/* Outer Glow */}
+              <div className="absolute inset-0 bg-blue-400/20 blur-3xl rounded-full scale-150 animate-pulse" />
+              {/* Spinning Ring */}
+              <div className="w-20 h-20 rounded-full border-4 border-gray-100 border-t-blue-500 animate-spin" />
+              {/* Center Icon */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Sparkles size={32} className="text-blue-500 animate-pulse" />
+              </div>
+            </div>
+            <div className="text-center space-y-3 px-8">
+              <h2 className="text-2xl font-black text-black tracking-tight">Apple Intelligence is Searching...</h2>
+              <p className="text-[15px] text-gray-500 font-bold leading-relaxed">
+                Analyzing your private photo metadata on-device to find "{query}".
+              </p>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-100">
+               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" />
+               <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:0.2s]" />
+               <div className="w-1.5 h-1.5 bg-blue-300 rounded-full animate-bounce [animation-delay:0.4s]" />
+               <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest ml-1">Secure Enclave Active</span>
+            </div>
+          </div>
+        ) : searchResults !== null ? (
           <div className="space-y-4 animate-in fade-in duration-300">
             <div className="flex justify-between items-center">
               <h2 className="text-[22px] font-bold text-black">
@@ -160,6 +186,7 @@ export const SearchView: React.FC = () => {
                       src={photo.url} 
                       alt="Search Result" 
                       className="w-full h-full object-cover"
+                      onError={handleImageError}
                     />
                     {photo.isProRAW && (
                       <span className="absolute top-2 right-2 bg-black/50 backdrop-blur-md text-white text-[9px] font-bold px-1.5 py-0.5 rounded-sm border border-white/10 uppercase tracking-tighter">

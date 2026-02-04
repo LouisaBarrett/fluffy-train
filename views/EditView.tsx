@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { X, RotateCcw, Monitor, SlidersHorizontal, Camera, Sparkles, Zap, Crop, Maximize, Check, ShieldCheck } from 'lucide-react';
 import { useSettings } from '../store/context';
 import { AccessibleButton } from '../components/AccessibleButton';
+import { handleImageError } from '../constants';
 
 export const EditView: React.FC = () => {
   const { selectedPhoto, setView, settings, updateSettings, setIslandMessage } = useSettings();
@@ -97,11 +98,11 @@ export const EditView: React.FC = () => {
         {showCompare ? (
            <div className="w-full h-full flex gap-1 animate-in zoom-in-95 duration-200">
               <div className="flex-1 relative overflow-hidden rounded-[32px] border-2 border-white/20">
-                <img src={selectedPhoto.url} className="w-full h-full object-contain" style={{ transform: `scale(${zoom})` }} alt="Original" />
+                <img src={selectedPhoto.url} className="w-full h-full object-contain" style={{ transform: `scale(${zoom})` }} alt="Original" onError={handleImageError} />
                 <span className="absolute bottom-4 left-4 bg-black/60 px-3 py-1 text-[10px] rounded-full font-black uppercase tracking-widest">Original</span>
               </div>
               <div className="flex-1 relative overflow-hidden rounded-[32px] border-2 border-blue-500">
-                <img src={selectedPhoto.url} className="w-full h-full object-contain" style={getFilterStyle()} alt="Edited" />
+                <img src={selectedPhoto.url} className="w-full h-full object-contain" style={getFilterStyle()} alt="Edited" onError={handleImageError} />
                 <span className="absolute bottom-4 left-4 bg-blue-600 px-3 py-1 text-[10px] rounded-full font-black uppercase tracking-widest">Modified</span>
               </div>
            </div>
@@ -113,6 +114,7 @@ export const EditView: React.FC = () => {
                 className="max-w-full max-h-full object-contain"
                 style={getFilterStyle()}
                 alt="Edit target"
+                onError={handleImageError}
               />
               
               {/* Crop Grid Overlay */}
@@ -273,6 +275,7 @@ export const EditView: React.FC = () => {
           </div>
         )}
 
+        {/* Fixed: Corrected syntax error by adding parentheses and && for conditional rendering */}
         {isBitPerfectActive && !isCropMode && (
           <div className="mt-10 p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 flex items-center justify-center gap-3">
              <ShieldCheck size={16} className="text-blue-400" />

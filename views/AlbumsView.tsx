@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSettings } from '../store/context';
 import { ChevronRight, Copy, EyeOff, Trash2, Heart, Layers, Video, ChevronLeft, Plus } from 'lucide-react';
+import { handleImageError } from '../constants';
 
 export const AlbumsView: React.FC = () => {
   const { settings, setView, photos } = useSettings();
@@ -50,10 +51,11 @@ export const AlbumsView: React.FC = () => {
     </div>
   );
 
-  const AlbumCard = ({ album }: { album: any }) => (
+  // Fix: Explicitly type AlbumCard as React.FC to allow 'key' prop when used within map iterations.
+  const AlbumCard: React.FC<{ album: any }> = ({ album }) => (
     <div className="space-y-2 cursor-pointer active:opacity-70 group" onClick={() => {}}>
       <div className={`aspect-square bg-gray-100 rounded-xl overflow-hidden shadow-sm border ${settings.highVisibilityMode ? 'border-black border-2' : 'border-gray-100'}`}>
-        <img src={album.img} className="w-full h-full object-cover" alt={album.title} />
+        <img src={album.img} className="w-full h-full object-cover" alt={album.title} onError={handleImageError} />
       </div>
       <div className="px-0.5">
         <p className={`font-black text-[15px] text-black leading-tight ${settings.highVisibilityMode ? 'text-lg' : ''}`}>{album.title}</p>
