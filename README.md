@@ -6,6 +6,8 @@ View the app in AI Studio: https://ai.studio/apps/drive/15mdUr-Tf22t309Lz6Q7sdCv
 
 View project hosted with Vercel: https://fluffy-train-pi.vercel.app/
 
+Images come from the Unsplash API: https://unsplash.com/documentation
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
