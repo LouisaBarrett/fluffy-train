@@ -1,0 +1,7 @@
+{
+  "name": "iOS 26 Photos Redesign",
+  "description": "A fundamental redesign of the iPhone Photos app focused on universal accessibility (WCAG AAA), professional reliability, and intelligent automation.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
