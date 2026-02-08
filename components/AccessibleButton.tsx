@@ -29,10 +29,10 @@ export const AccessibleButton: React.FC<AccessibleButtonProps> = ({
   const baseClasses = "flex items-center justify-center gap-2 rounded-[26px] font-bold transition-all active:scale-[0.98] active:opacity-90 focus:outline-none focus:ring-4 focus:ring-blue-500/50 select-none cursor-pointer overflow-hidden";
   
   // FR-1.2: Minimum 44x44pt touch targets. 
-  // Adjusted for High Visibility Mode to fit 3-up layouts by reducing horizontal padding and using text-lg instead of xl.
+  // Optimization: Reduced horizontal padding from px-6 to px-4 to prevent truncation in multi-button layouts.
   const sizeClasses = settings.highVisibilityMode 
     ? "h-[72px] px-3 text-lg" 
-    : "h-[56px] px-6 text-[15px]";
+    : "h-[56px] px-4 text-[15px]";
 
   const variantClasses = {
     // DR-1.3: Primary action color iOS system blue (#007AFF)
@@ -62,7 +62,7 @@ export const AccessibleButton: React.FC<AccessibleButtonProps> = ({
       aria-label={label}
     >
       {icon && <span className={`${settings.highVisibilityMode ? "scale-110" : ""} shrink-0 flex items-center justify-center`}>{icon}</span>}
-      <span className="whitespace-nowrap font-black tracking-tight truncate">{label}</span>
+      <span className="whitespace-nowrap font-black tracking-tight">{label}</span>
     </button>
   );
 };

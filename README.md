@@ -1,16 +1,17 @@
-# Project Overview
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-This project was created with the Gemini AI Studio app for the course The Ai Augmented Designer (05-899) at Carnegie Mellon University in the Spring 2026 semester.
+# Run and deploy your AI Studio app
 
-View the app in AI Studio: https://aistudio.google.com/apps/drive/1Xr0CkZz9tBMq4kQbuqi9j9lx-I8hL-94
+This contains everything you need to run your app locally.
 
-View project hosted with Vercel: https://fluffy-train-pi.vercel.app/
-
-Images come from the Unsplash API: https://unsplash.com/documentation
+View your app in AI Studio: https://ai.studio/apps/drive/1Xr0CkZz9tBMq4kQbuqi9j9lx-I8hL-94
 
 ## Run Locally
 
 **Prerequisites:**  Node.js
+
 
 1. Install dependencies:
    `npm install`
