@@ -2,7 +2,7 @@
 
 This project was created with the Gemini AI Studio app for the course The Ai Augmented Designer (05-899) at Carnegie Mellon University in the Spring 2026 semester.
 
-View the app in AI Studio: https://ai.studio/apps/drive/15mdUr-Tf22t309Lz6Q7sdCv4zIw1i665
+View the app in AI Studio: https://aistudio.google.com/apps/drive/1Xr0CkZz9tBMq4kQbuqi9j9lx-I8hL-94
 
 View project hosted with Vercel: https://fluffy-train-pi.vercel.app/
 
