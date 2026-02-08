@@ -108,8 +108,8 @@ export const PhotoDetailView: React.FC = () => {
         )}
       </div>
 
-      {/* Action Bar - Solid Opaque Foundation (FR-1.7) */}
-      <div className={`${settings.highVisibilityMode ? 'px-3 gap-2 bg-white border-gray-100' : 'px-6 gap-4 bg-[#121212] border-white/5'} pt-6 pb-14 border-t-2 flex transition-all`}>
+      {/* Action Bar - Optimized gaps to prevent truncation */}
+      <div className={`${settings.highVisibilityMode ? 'px-3 gap-2 bg-white border-gray-100' : 'px-4 gap-3 bg-[#121212] border-white/5'} pt-6 pb-14 border-t-2 flex transition-all`}>
         <AccessibleButton 
           label="Share" 
           variant="secondary" 
